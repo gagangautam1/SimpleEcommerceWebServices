@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?><!-- Use this file to deploy some handlers/chains and services      --><!-- Two ways to do this:                                           --><!--   java org.apache.axis.client.AdminClient deploy.wsdd          --><!--      after the axis server is running                          --><!-- or                                                             --><!--   java org.apache.axis.utils.Admin client|server deploy.wsdd   --><!--      from the same directory that the Axis engine runs         --><deployment xmlns="http://xml.apache.org/axis/wsdd/" xmlns:java="http://xml.apache.org/axis/wsdd/providers/java">
+
+  <!-- Services from ServiceService WSDL service -->
+
+  <service name="Service" provider="java:RPC" style="wrapped" use="literal">
+      <parameter name="wsdlTargetNamespace" value="http://Connection"/>
+      <parameter name="wsdlServiceElement" value="ServiceService"/>
+      <parameter name="schemaQualified" value="http://Connection"/>
+      <parameter name="wsdlServicePort" value="Service"/>
+      <parameter name="className" value="Connection.Service"/>
+      <parameter name="wsdlPortType" value="Service"/>
+      <parameter name="typeMappingVersion" value="1.2"/>
+      <operation xmlns:operNS="http://Connection" xmlns:retNS="http://Connection" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="signUp" qname="operNS:signUp" returnQName="retNS:signUpReturn" returnType="rtns:string" soapAction="">
+        <parameter xmlns:pns="http://Connection" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:username" type="tns:string"/>
+        <parameter xmlns:pns="http://Connection" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:pwd" type="tns:string"/>
+        <parameter xmlns:pns="http://Connection" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:email" type="tns:string"/>
+        <parameter xmlns:pns="http://Connection" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:hpone" type="tns:string"/>
+        <parameter xmlns:pns="http://Connection" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:wpone" type="tns:string"/>
+        <parameter xmlns:pns="http://Connection" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:address" type="tns:string"/>
+      </operation>
+      <operation xmlns:operNS="http://Connection" xmlns:retNS="http://Connection" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="fetchCategory" qname="operNS:fetchCategory" returnQName="retNS:fetchCategoryReturn" returnType="rtns:string" soapAction="">
+      </operation>
+      <operation xmlns:operNS="http://Connection" xmlns:retNS="http://Connection" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="fetchProducts" qname="operNS:fetchProducts" returnQName="retNS:fetchProductsReturn" returnType="rtns:string" soapAction="">
+        <parameter xmlns:pns="http://Connection" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:category" type="tns:string"/>
+      </operation>
+      <operation xmlns:operNS="http://Connection" xmlns:retNS="http://Connection" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="removeCart" qname="operNS:removeCart" returnQName="retNS:removeCartReturn" returnType="rtns:string" soapAction="">
+        <parameter xmlns:pns="http://Connection" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:username" type="tns:string"/>
+        <parameter xmlns:pns="http://Connection" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:id" type="tns:int"/>
+      </operation>
+      <operation xmlns:operNS="http://Connection" xmlns:retNS="http://Connection" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="displayCart" qname="operNS:displayCart" returnQName="retNS:displayCartReturn" returnType="rtns:string" soapAction="">
+        <parameter xmlns:pns="http://Connection" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:user" type="tns:string"/>
+      </operation>
+      <operation xmlns:operNS="http://Connection" xmlns:retNS="http://Connection" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="addToCart" qname="operNS:addToCart" returnQName="retNS:addToCartReturn" returnType="rtns:string" soapAction="">
+        <parameter xmlns:pns="http://Connection" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:id" type="tns:int"/>
+        <parameter xmlns:pns="http://Connection" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:user" type="tns:string"/>
+      </operation>
+      <operation xmlns:operNS="http://Connection" xmlns:retNS="http://Connection" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="login" qname="operNS:login" returnQName="retNS:loginReturn" returnType="rtns:string" soapAction="">
+        <parameter xmlns:pns="http://Connection" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:username" type="tns:string"/>
+        <parameter xmlns:pns="http://Connection" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:pwd" type="tns:string"/>
+      </operation>
+      <operation xmlns:operNS="http://Connection" xmlns:retNS="http://Connection" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="advertiseProduct" qname="operNS:advertiseProduct" returnQName="retNS:advertiseProductReturn" returnType="rtns:string" soapAction="">
+        <parameter xmlns:pns="http://Connection" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:category" type="tns:string"/>
+        <parameter xmlns:pns="http://Connection" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:name" type="tns:string"/>
+        <parameter xmlns:pns="http://Connection" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:model" type="tns:string"/>
+        <parameter xmlns:pns="http://Connection" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:price" type="tns:int"/>
+        <parameter xmlns:pns="http://Connection" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:user" type="tns:string"/>
+      </operation>
+      <parameter name="allowedMethods" value="removeCart fetchProducts advertiseProduct signUp fetchCategory login displayCart addToCart"/>
+
+  </service>
+</deployment>
